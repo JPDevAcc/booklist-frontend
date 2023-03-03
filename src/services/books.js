@@ -6,8 +6,10 @@ const CONTENT_JSON_HEADER = {
 	}
 } ;
 
-const API_SERVER = 'http://localhost' ;
-const API_PORT = 3005 ;
+// const API_SERVER = 'http://localhost' ;
+// const API_PORT = 3005 ;
+const API_SERVER = 'https://jpdev-booklist-api.onrender.com' ;
+const API_PORT = '' ;
 const API_ROOT = '' ;
 
 const API_URL = API_SERVER + ':' + API_PORT + API_ROOT ;
