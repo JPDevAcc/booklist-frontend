@@ -17,13 +17,13 @@ const [searchAuthor, changeSearchAuthor] = useState('') ;
 
 	function handleSearchTitleChange(e) {
 		changePageNum(0) ;
-		getBooks(0, 0, e.target.value, searchAuthor) ;
+		getBooks(booksPerPage * pageNum, booksPerPage * (pageNum + 1), e.target.value, searchAuthor) ;
 		changeSearchTitle(e.target.value) ;
 	}
 
 	function handleSearchAuthorChange(e) {
 		changePageNum(0) ;
-		getBooks(0, 0, searchTitle, e.target.value) ;
+		getBooks(booksPerPage * pageNum, booksPerPage * (pageNum + 1), searchTitle, e.target.value) ;
 		changeSearchAuthor(e.target.value) ;
 	}
 
