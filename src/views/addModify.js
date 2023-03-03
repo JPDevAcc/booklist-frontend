@@ -24,7 +24,7 @@ export default function Add({bookService, externalBookData}) {
 	}, [externalBookData]) ;
 
 	function handleChange(e) {
-		changeFormData(formData => ({...formData, [e.target.name]: e.target.value.trim()})) ;
+		changeFormData(formData => ({...formData, [e.target.name]: e.target.value})) ;
 	}
 
 	function addBook(formData) {

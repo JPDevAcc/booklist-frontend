@@ -51,7 +51,7 @@ export default class BookService {
 		/* Search criteria format: f1=fieldName1&s1=searchValue1&f2=fieldName2&s2=searchValue2... */
 		let argsStr = '' ;
 		for (const [i, criteria] of criteriaList.entries()) {
-			argsStr += ('&f' + i + '=') + encodeURI(criteria.fieldName) + ('&s' + i + '=') + encodeURI(criteria.searchValue) ;
+			argsStr += ('&f' + i + '=') + encodeURI(criteria.fieldName) + ('&s' + i + '=') + encodeURI(criteria.searchValue.trim()) ;
 		}
 		return axios.get(API_RETRIEVE_SEARCH_RANGE + '/and?' + argsStr).then(this.errHandler(null)).catch((err) => this.errHandlerInternal(err)) ;
 	}
@@ -61,14 +61,22 @@ export default class BookService {
 	}
 
 	addBook(data) {
+		this._trimObjFields(data) ;
 		return axios.post(API_ADD, data, CONTENT_JSON_HEADER).then(this.errHandler(null)).catch((err) => this.errHandlerInternal(err)) ;
 	}
 
 	updateBook(id, data) {
+		this._trimObjFields(data) ;
 		return axios.put(API_UPDATE + '/' + id, data, CONTENT_JSON_HEADER).catch((err) => this.errHandlerInternal(err)) ;
 	}
 
 	setIsReadStatus(id, isRead) {
 		return axios.patch(API_SETISREAD + '/' + id, {read: isRead}, CONTENT_JSON_HEADER).then(this.errHandler(null)).catch((err) => this.errHandlerInternal(err)) ;
+	}
+
+	_trimObjFields(obj) {
+		for (const key of Object.keys(obj)) {
+			obj[key] = obj[key].trim() ;
+		}
 	}
 }
