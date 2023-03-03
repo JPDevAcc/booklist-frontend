@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/booklist-frontend/static/css/main.ea0b3f96.css",
+    "main.js": "/booklist-frontend/static/js/main.3df5553b.js",
+    "index.html": "/booklist-frontend/index.html",
+    "main.ea0b3f96.css.map": "/booklist-frontend/static/css/main.ea0b3f96.css.map",
+    "main.3df5553b.js.map": "/booklist-frontend/static/js/main.3df5553b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ea0b3f96.css",
+    "static/js/main.3df5553b.js"
+  ]
+}
