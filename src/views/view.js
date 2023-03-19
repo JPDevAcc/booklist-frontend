@@ -8,8 +8,8 @@ const booksPerPage = 10 ;
 export default function View({ bookService, changeBookDataToModify }) {
 	const [ state, dispatch ] = React.useContext(UserContext) ;
 
-const [searchTitle, changeSearchTitle] = useState('') ;
-const [searchAuthor, changeSearchAuthor] = useState('') ;
+	const [searchTitle, changeSearchTitle] = useState('') ;
+	const [searchAuthor, changeSearchAuthor] = useState('') ;
 
 	const [bookData, changeBookData] = useState(null) ;
 	const [numBooks, changeNumBooks] = useState(null) ;
@@ -32,13 +32,14 @@ const [searchAuthor, changeSearchAuthor] = useState('') ;
 		if (title) criteriaList.push({fieldName: 'title', searchValue: title}) ;
 		if (author) criteriaList.push({fieldName: 'author', searchValue: author}) ;
 		if (criteriaList.length > 0) {
-			bookService.retrieveRangeByCriteria(indexStart, indexEnd, criteriaList).then(({data}) => {
+			return bookService.retrieveRangeByCriteria(indexStart, indexEnd, criteriaList).then(({data}) => {
 				changeBookData(data) ;
-			}).catch((err) => console.log(err)) ;
+			}) ;
 		}
 		else {
-			retrieveBooks(indexStart, indexEnd) ;
+			const books = retrieveBooks(indexStart, indexEnd) ;
 			getNumBooks() ;
+			return books ;
 		}
 	}
 
@@ -56,14 +57,14 @@ const [searchAuthor, changeSearchAuthor] = useState('') ;
 	function getNumBooks() {
 		bookService.getCount().then(({data}) => {
 			changeNumBooks(data.count) ;
-		}).catch((err) => console.log(err)) ;
+		}) ;
 	}
 
 	function retrieveBooks(indexStart, indexEnd) {
 		return bookService.retrieveRange(indexStart, indexEnd).then(({data}) => {
 			console.log(data) ;
 			changeBookData(data) ;
-		}).catch((err) => console.log(err)) ;
+		}) ;
 	}
 
 	function toggleRead(id, isRead) {
