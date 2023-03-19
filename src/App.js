@@ -36,6 +36,10 @@ function App() {
 
 				<Container className="my-container">
 					<main>
+						<div class="text-center fw-bold">
+							Please note that most database-write operations may currently be disabled to prevent abuse
+						</div>
+
 						<Message />
 
 						<Routes>
