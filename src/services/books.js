@@ -27,6 +27,7 @@ const API_SETISREAD = API_URL + '/booklist/isread' ;
 export default class BookService {
 	constructor(errHandler = null) {
 		this.errHandler = errHandler ;
+		axios.defaults.withCredentials = true; // Send cookies
 	}
 
 	errHandlerInternal(err) {
